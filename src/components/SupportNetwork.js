@@ -10,7 +10,8 @@ const mapContainerStyle = {
 function SupportNetwork() {
   const [contacts, setContacts] = useState([]);
   const [userLocation, setUserLocation] = useState(null); // Estado para la ubicación del usuario
-  
+  const [center, setCenter] = useState({ lat: 21.8853, lng: -102.2914 }); // Estado para el centro del mapa, con una ubicación predeterminada.
+
   useEffect(() => {
     // Simulando la obtención de contactos (esto debería venir de un servidor o API)
     const simulatedContacts = [
@@ -26,8 +27,9 @@ function SupportNetwork() {
       const id = navigator.geolocation.watchPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          console.log("Ubicación actualizada: ", latitude, longitude); // Verificar si está obteniendo la ubicación correcta
-          setUserLocation({ lat: latitude, lng: longitude }); // Actualizar la ubicación del usuario en tiempo real
+          const newLocation = { lat: latitude, lng: longitude };
+          setUserLocation(newLocation); // Actualizar la ubicación del usuario en tiempo real
+          setCenter(newLocation); // Mover el centro del mapa a la nueva ubicación
         },
         (error) => {
           console.error("Error obteniendo la ubicación: ", error);
@@ -59,13 +61,13 @@ function SupportNetwork() {
 
       {/* Mapa */}
       <LoadScript googleMapsApiKey="AIzaSyBnZ5RQASMNgj0gB6XjlJdiOR9tzHiXwXs"> {/* Sustituye con tu clave de API */}
-        {userLocation ? ( // Mostrar el mapa solo si la ubicación del usuario está disponible
-          <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            center={userLocation} // Centrar en la ubicación del usuario
-            zoom={12}
-          >
-            {/* Marcador para la ubicación del usuario */}
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          center={center} // Usamos el estado "center" para centrar el mapa en la ubicación más reciente
+          zoom={15} // Zoom adecuado para seguir al usuario en tiempo real
+        >
+          {/* Marcador para la ubicación del usuario */}
+          {userLocation && (
             <Marker
               position={userLocation}
               title="Tu Ubicación"
@@ -73,18 +75,17 @@ function SupportNetwork() {
                 url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" // Cambia el icono si deseas
               }}
             />
-            {/* Marcadores para los contactos */}
-            {contacts.map(contact => (
-              <Marker
-                key={contact.id}
-                position={contact.location}
-                title={contact.name}
-              />
-            ))}
-          </GoogleMap>
-        ) : (
-          <Typography variant="body1">Obteniendo ubicación...</Typography>
-        )}
+          )}
+
+          {/* Marcadores para los contactos */}
+          {contacts.map(contact => (
+            <Marker
+              key={contact.id}
+              position={contact.location}
+              title={contact.name}
+            />
+          ))}
+        </GoogleMap>
       </LoadScript>
 
       {/* Lista de contactos */}
