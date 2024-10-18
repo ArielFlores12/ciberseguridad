@@ -6,7 +6,8 @@ function Layout({ children }) {
   return (
     <>
       <AppBar position="static" sx={{ backgroundColor: '#d91d64' }}> {/* Cambia el color de fondo */}
-        <Toolbar>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          {/* Logo en lugar del texto "WomanHelp" */}
           <Box 
             component="img" 
             src="/WomanHelpLogo.png" // Cambia la ruta a tu imagen
@@ -16,9 +17,9 @@ function Layout({ children }) {
               marginRight: 2 // Espacio entre el logo y los botones
             }} 
           />
-          
-          {/* Enlaces de navegación como botones */}
-          <Box>
+
+          {/* Enlaces de navegación alineados a la izquierda */}
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
             {['/', '/panic-button', '/risk-map', '/fake-call', '/support-network'].map((path, index) => {
               const titles = ['Inicio', 'Botón de Pánico', 'Mapa de Riesgo', 'Llamada Falsa', 'Mapa de Auxilio'];
               return (
