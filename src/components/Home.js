@@ -26,17 +26,17 @@ function Home() {
           marginBottom: 4, // Espacio entre el logo y el título
         }}
       />
-      
+
       {/* Título */}
       <Typography
         variant="h4"
         component="h1"
         gutterBottom
-        sx={{ color: '#2E3B55', fontWeight: 'bold' }}
+        sx={{ color: '#d91d64', fontWeight: 'bold' }}
       >
         Bienvenida a SafeHer
       </Typography>
-      
+
       {/* Descripción */}
       <Typography
         variant="body1"
@@ -45,7 +45,7 @@ function Home() {
       >
         Tu aplicación de seguridad personal.
       </Typography>
-      
+
       {/* Botones */}
       <Stack spacing={2} direction="row">
         <Button
@@ -80,6 +80,24 @@ function Home() {
           }}
         >
           Mapa de Zonas de Riesgo
+        </Button>
+
+        {/* Nuevo botón para llamada falsa */}
+        <Button
+          variant="contained"
+          component={Link}
+          to="/fake-call"
+          sx={{
+            backgroundColor: '#4caf50', // Color verde para diferenciarlo
+            color: '#fff',
+            borderRadius: '20px',
+            padding: '10px 20px',
+            '&:hover': {
+              backgroundColor: '#388e3c',
+            },
+          }}
+        >
+          Llamada Falsa
         </Button>
       </Stack>
     </Box>
