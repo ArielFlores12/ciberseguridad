@@ -40,6 +40,7 @@ function App() {
               <Route path="*" element={<NotFound />} /> {/* Manejo de errores */}
             </Routes>
           </Suspense>
+          {/* no borrar */}
         </Layout>
       </Router>
     </ThemeProvider>
