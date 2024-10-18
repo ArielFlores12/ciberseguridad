@@ -21,18 +21,28 @@ function SupportNetwork() {
     
     setContacts(simulatedContacts);
 
-    // Obtener la ubicación del usuario
+    // Obtener la ubicación en tiempo real del usuario
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
+      const id = navigator.geolocation.watchPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setUserLocation({ lat: latitude, lng: longitude }); // Establecer la ubicación del usuario
+          console.log("Ubicación actualizada: ", latitude, longitude); // Verificar si está obteniendo la ubicación correcta
+          setUserLocation({ lat: latitude, lng: longitude }); // Actualizar la ubicación del usuario en tiempo real
         },
         (error) => {
           console.error("Error obteniendo la ubicación: ", error);
-          // Aquí puedes manejar errores, como el caso en que el usuario no permite la geolocalización.
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
         }
       );
+      
+      // Limpieza del watchPosition cuando el componente se desmonte
+      return () => {
+        navigator.geolocation.clearWatch(id);
+      };
     } else {
       console.error("Geolocalización no es soportada en este navegador.");
     }
@@ -49,13 +59,13 @@ function SupportNetwork() {
 
       {/* Mapa */}
       <LoadScript googleMapsApiKey="AIzaSyBnZ5RQASMNgj0gB6XjlJdiOR9tzHiXwXs"> {/* Sustituye con tu clave de API */}
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          center={userLocation || { lat: 21.8853, lng: -102.2914 }} // Centro del mapa es la ubicación del usuario o una predeterminada
-          zoom={12}
-        >
-          {/* Marcador para la ubicación del usuario */}
-          {userLocation && (
+        {userLocation ? ( // Mostrar el mapa solo si la ubicación del usuario está disponible
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            center={userLocation} // Centrar en la ubicación del usuario
+            zoom={12}
+          >
+            {/* Marcador para la ubicación del usuario */}
             <Marker
               position={userLocation}
               title="Tu Ubicación"
@@ -63,16 +73,18 @@ function SupportNetwork() {
                 url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" // Cambia el icono si deseas
               }}
             />
-          )}
-          {/* Marcadores para los contactos */}
-          {contacts.map(contact => (
-            <Marker
-              key={contact.id}
-              position={contact.location}
-              title={contact.name}
-            />
-          ))}
-        </GoogleMap>
+            {/* Marcadores para los contactos */}
+            {contacts.map(contact => (
+              <Marker
+                key={contact.id}
+                position={contact.location}
+                title={contact.name}
+              />
+            ))}
+          </GoogleMap>
+        ) : (
+          <Typography variant="body1">Obteniendo ubicación...</Typography>
+        )}
       </LoadScript>
 
       {/* Lista de contactos */}
