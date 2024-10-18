@@ -14,6 +14,7 @@ function Layout({ children }) {
           <Link to="/panic-button" style={{ color: 'white', marginRight: '15px' }}>Botón de Pánico</Link>
           <Link to="/risk-map" style={{ color: 'white', marginRight: '15px' }}>Mapa de Riesgo</Link>
           <Link to="/fake-call" style={{ color: 'white', marginRight: '15px' }}>Llamada Falsa</Link>
+          <Link to="/support-network" style={{ color: 'white', marginRight: '15px' }}>Mapa de Auxilio</Link>
         </Toolbar>
       </AppBar>
       <Container>
