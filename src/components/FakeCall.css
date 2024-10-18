@@ -1,0 +1,25 @@
+.fake-call {
+    background: linear-gradient(to bottom, #000, #333);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .fake-call h1, .fake-call p {
+    color: white;
+    text-align: center;
+  }
+  
+  .fake-call .call-button {
+    width: 80px;
+    height: 80px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
