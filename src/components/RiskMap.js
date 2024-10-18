@@ -8,55 +8,65 @@ function RiskMap() {
       mt={6}
       sx={{
         padding: 4,
-        borderRadius: 2,
-        boxShadow: 3,
-        maxWidth: 700,
+        borderRadius: 3,
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', // Sombra más suave y amplia
+        maxWidth: 800, // Aumenta el ancho máximo
         margin: '0 auto',
-        backgroundColor: '#f0f4c3', // Fondo suave amarillo claro
+        backgroundColor: '#fafafa', // Fondo blanco para mayor contraste
       }}
     >
+      {/* Título */}
       <Typography 
         variant="h4" 
         component="h2" 
         gutterBottom
-        sx={{ color: '#558b2f', fontWeight: 'bold' }} // Color verde para el título
+        sx={{ 
+          color: '#d91d64', // Color distintivo del esquema de color
+          fontWeight: 'bold',
+          fontSize: '2rem', // Tamaño de fuente ajustado para mayor impacto
+        }}
       >
         Mapa de Zonas de Riesgo
       </Typography>
+
+      {/* Descripción */}
       <Typography 
         variant="body1" 
         gutterBottom
-        sx={{ marginBottom: 3 }}
+        sx={{ 
+          marginBottom: 3, 
+          color: '#555', // Texto secundario más oscuro
+          fontSize: '1.1rem',
+        }}
       >
-        Aquí se mostrará un mapa con las áreas peligrosas.
+        Consulta las áreas de riesgo en tu localidad.
       </Typography>
 
-      {/* Placeholder para el mapa */}
+      {/* Contenedor para el mapa */}
       <Box
         sx={{
-          height: '400px',
+          height: '450px', // Altura del contenedor del mapa
           width: '100%',
-          backgroundColor: '#c8e6c9', // Fondo verde claro para el mapa simulado
-          borderRadius: '8px',
+          borderRadius: '12px',
+          backgroundColor: '#e8f5e9', // Fondo verde claro
+          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', // Sombra para el contenedor del mapa
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          overflow: 'hidden'
         }}
       >
+        {/* Imagen del mapa */}
         <Box
-        component="img"
-        src="/mapa_zonas.png"
-        alt="MZ simulacion"
-        sx={{
-          height: '400px',
-          width: '100%',
-          backgroundColor: '#c8e6c9', // Fondo verde claro para el mapa simulado
-          borderRadius: '6px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      ></Box>
+          component="img"
+          src="/mapa_zonas.png"
+          alt="Simulación de mapa de zonas de riesgo"
+          sx={{
+            height: '100%', // Ajustar imagen a la altura del contenedor
+            width: '100%',
+            objectFit: 'cover', // Cubrir el espacio sin deformar la imagen
+          }}
+        />
       </Box>
     </Box>
   );
