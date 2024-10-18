@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { IconContext } from 'react-icons';
 import { FaMicrophoneSlash, FaKeyboard, FaVolumeUp, FaPhone, FaPause, FaPhoneSlash } from 'react-icons/fa';
 
-const CallInterface = () => {
+const Fakecall = () => {
   const [callEnded, setCallEnded] = useState(false);
   const [callTime, setCallTime] = useState(0); // Para rastrear el tiempo de la llamada en segundos
   const navigate = useNavigate();
@@ -128,4 +128,4 @@ const styles = {
   },
 };
 
-export default CallInterface;
+export default Fakecall;
