@@ -7,22 +7,48 @@ function Home() {
     <Box
       className="home"
       sx={{
+        position: 'relative',  // Necesario para el posicionamiento absoluto de las imágenes
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f5f5f5', // Fondo suave
+        minHeight: '80vh', // Cambiado a minHeight para ajustar el espacio en blanco
         padding: 2,
       }}
     >
-      {/* Logo */}
+      {/* Imagen en la esquina superior izquierda */}
       <Box
         component="img"
-        src="/path-to-your-logo.png" // Ruta del logo
-        alt="Logo SafeHer"
+        src="/SecretariaDeSeguridadPublicaLogo.png" // Cambia la ruta a tu imagen
+        alt="SSP Logo"
         sx={{
-          width: 150, // Ajusta el tamaño del logo
+          position: 'absolute',
+          top: 20, // Espacio desde la parte superior
+          left: 20, // Espacio desde la parte izquierda
+          width: 150, // Tamaño de la imagen
+        }}
+      />
+
+      {/* Imagen en la esquina superior derecha */}
+      <Box
+        component="img"
+        src="/C5Logo.png" // Cambia la ruta a tu imagen
+        alt="C5 Logo"
+        sx={{
+          position: 'absolute',
+          top: 20, // Espacio desde la parte superior
+          right: 20, // Espacio desde la parte derecha
+          width: 150, // Tamaño de la imagen
+        }}
+      />
+
+      {/* Logo central */}
+      <Box
+        component="img"
+        src="/WomanHelpLogo.png" // Ruta del logo
+        alt="Logo WomanHelp"
+        sx={{
+          width: 500, // Ajusta el tamaño del logo
           marginBottom: 4, // Espacio entre el logo y el título
         }}
       />
@@ -34,7 +60,7 @@ function Home() {
         gutterBottom
         sx={{ color: '#d91d64', fontWeight: 'bold' }}
       >
-        Bienvenida a SafeHer
+        Bienvenida a WomanHelp
       </Typography>
 
       {/* Descripción */}
@@ -47,7 +73,7 @@ function Home() {
       </Typography>
 
       {/* Botones */}
-      <Stack spacing={2} direction="row">
+      <Stack spacing={2} direction="row" sx={{ marginBottom: 0 }}> {/* Ajustado el margen inferior */}
         <Button
           variant="contained"
           component={Link}

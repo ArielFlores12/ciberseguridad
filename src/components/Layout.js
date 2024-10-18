@@ -8,7 +8,7 @@ function Layout({ children }) {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            SafeHer
+            WomanHelp
           </Typography>
           <Link to="/" style={{ color: 'white', marginRight: '15px' }}>Inicio</Link>
           <Link to="/panic-button" style={{ color: 'white', marginRight: '15px' }}>Botón de Pánico</Link>
