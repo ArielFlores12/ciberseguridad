@@ -1,0 +1,36 @@
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  
+  .logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .slogan {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 40px;
+  }
+  
+  .arrow-container {
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .arrow {
+    font-size: 50px;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  .arrow:hover {
+    color: #007bff;  /* Cambia de color al pasar el mouse */
+  }
+  

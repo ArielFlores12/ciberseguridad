@@ -5,12 +5,12 @@ function RiskMap() {
   return (
     <Box
       textAlign="center"
-      mt={5}
+      mt={6}
       sx={{
         padding: 4,
         borderRadius: 2,
         boxShadow: 3,
-        maxWidth: 600,
+        maxWidth: 700,
         margin: '0 auto',
         backgroundColor: '#f0f4c3', // Fondo suave amarillo claro
       }}
@@ -34,7 +34,7 @@ function RiskMap() {
       {/* Placeholder para el mapa */}
       <Box
         sx={{
-          height: '300px',
+          height: '400px',
           width: '100%',
           backgroundColor: '#c8e6c9', // Fondo verde claro para el mapa simulado
           borderRadius: '8px',
@@ -43,9 +43,20 @@ function RiskMap() {
           alignItems: 'center',
         }}
       >
-        <Typography variant="body2" color="textSecondary">
-          Mapa de Zonas de Riesgo (en desarrollo)
-        </Typography>
+        <Box
+        component="img"
+        src="/mapa_zonas.png"
+        alt="MZ simulacion"
+        sx={{
+          height: '400px',
+          width: '100%',
+          backgroundColor: '#c8e6c9', // Fondo verde claro para el mapa simulado
+          borderRadius: '6px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      ></Box>
       </Box>
     </Box>
   );
