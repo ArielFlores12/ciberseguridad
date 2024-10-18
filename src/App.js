@@ -16,7 +16,7 @@ const NotFound = lazy(() => import('./components/NotFound')); // Componente de 4
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2',
+      main: '#d91d64',
     },
     secondary: {
       main: '#dc004e',
@@ -33,13 +33,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/panic-button" element={<PanicButton />} />
+              <Route path="/fake-call" element={<FakeCall />} />
               <Route path="/risk-map" element={<RiskMap />} />
               <Route path="/support-network" element={<SupportNetwork />} />
               <Route path="/emergency-voice" element={<EmergencyVoice />} />
-              <Route path="/fake-call" element={<FakeCall />} />
               <Route path="*" element={<NotFound />} /> {/* Manejo de errores */}
             </Routes>
           </Suspense>
+          {/* no borrar */}
         </Layout>
       </Router>
     </ThemeProvider>
