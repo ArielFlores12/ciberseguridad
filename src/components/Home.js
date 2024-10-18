@@ -48,7 +48,7 @@ function Home() {
         src="/WomanHelpLogo.png" // Ruta del logo
         alt="Logo WomanHelp"
         sx={{
-          width: 500, // Ajusta el tamaño del logo
+          width: 350, // Ajusta el tamaño del logo
           marginBottom: 4, // Espacio entre el logo y el título
         }}
       />
